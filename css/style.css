@@ -1,0 +1,562 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: #333;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    width: 360px;
+    max-width: 360px;
+    height: 95vh;
+    background-color: #111;
+    border-radius: 32px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* .wrapper::before{
+    content: '';
+    width: 104%;
+    height: 102%;
+    background: linear-gradient(135deg, #c02425, #14ffe9, #ffeb3b, #ff00e0);
+    border-radius: 32px;
+
+    position: absolute;
+    top: -1%;
+    left: -2%;
+
+    z-index: -1;
+
+    animation: animate 2.5s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        filter: hue-rotate(0deg);
+    }
+
+    100%{
+        filter: hue-rotate(360deg);
+    }
+} */
+
+.wrapper > * {
+    border-radius: 24px;
+    box-shadow: -1px -12px 22px 7px rgba(102,102,102,0.25);
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    /* overflow: hidden; */
+}
+
+.wrapper > .player-layer {
+    height: 90%;
+    background-color: #fff;
+
+    z-index: 1;
+}
+
+.wrapper > .icons-layer {
+    height: 30%;
+    background-color: #02b1dd;
+
+    z-index: 2;
+}
+
+.wrapper > .users-layer {
+    height: 20%;
+    background-color: #fff;
+    
+    z-index: 3;
+}
+
+
+
+/* for each layer */
+
+.wrapper .icon-logo{
+    width: 100%;
+    height: 11%;
+    color: #fff;
+
+    padding: 8px 32px;
+    border-radius: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    top: 0;
+    bottom: initial;
+}
+
+.icon-logo .nav-logo button{
+    color: #fff;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.icon-logo h3{
+    font-size: 26px;
+}
+
+.icon-logo .nav-logo button i.fa-user{
+    font-size: 15px;
+}
+
+
+
+/* Modal Area */
+/* Start Signup Modal */
+
+.modal-container{
+    background-color: rgba(0,0,0,0.6);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    display: none;
+
+    z-index: 1000;
+}
+
+.modal-container.showmodal{
+    display: block;
+}
+
+.modal{
+    width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 3px 10px  rgba(0,0,0,0.3);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+
+    overflow: hidden;
+}
+
+.close-btn{
+    background: transparent;
+    font-size: 20px;
+    border: 0;
+
+    position: absolute;
+    top: 3%;
+    right: 3%;
+}
+
+.modal-header{
+    background: skyblue;
+    color: #fff;
+    padding: 15px;
+}
+
+.modal-header h3{
+    color: #000;
+}
+
+.modal-content{
+    padding: 20px;
+}
+
+.modal-form .form-group{
+    margin: 15px 0;
+}
+
+.modal-form label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-form .form-input{
+    width: 100%;
+    padding: 8px;
+}
+
+.modal-form .submit-btn{
+    width: 100%;
+    color: #fff;
+    background: hotpink;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+}
+
+
+
+/* player-layer */
+
+.wrapper > .player-layer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.player-layer .control-layer{
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper > .player-layer .cd {
+    width: 260px;
+    height: 260px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    position: relative;
+    
+    overflow: hidden;
+
+    transform-origin: top center;
+
+    transition: transform 0.5s 0.1s ease-out;
+}
+
+.cd img{
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+
+    animation: myani 5s linear infinite;
+
+    animation-play-state: paused;
+}
+
+.player-layer.play .cd img{
+    animation-play-state: running;
+}
+
+.cd::after{
+    content:'';
+    width: 60px;
+    height: 60px;
+    background-color: #999;
+    border-radius: 50%;
+
+    position: absolute;
+    bottom: 26%;
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+
+    opacity: 0.6;
+}
+
+@keyframes myani {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.wrapper > .player-layer .cd.shrink {
+    transform: scale(0.5);
+}
+
+/* .player-layer .cd .progress-area{
+    width: 300px;
+    height: 6px;
+    border-radius: 50%;
+    background: chartreuse;
+
+    z-index: -1;
+} */
+
+.wrapper .song-details{
+    color: #444;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+    margin-top: 30px;
+
+    align-self: stretch;
+
+    transform-origin: left right;
+
+    transition: all 0.5s 0.2s ease-in;
+}
+
+.wrapper .song-details.shrink{
+    transform: scale(0.5);
+}
+
+.song-details .name{
+    font-size: 18px;
+
+    margin-bottom: 25px;
+}
+
+.wrapper div{
+    max-width: 100%;
+}
+
+.wrapper .progress-area{
+    width: 100%;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 50px;
+    cursor: pointer;
+
+    transform-origin: top right;
+
+    transition: all 0.5s 0.1s ease-out;
+}
+
+.progress-area .progress-bar{
+    width: 0;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #ff74a4 0%, #9f6ea3 100%);
+
+    position: relative;
+}
+
+.progress-area .progress-bar::before{
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: inherit;
+    border-radius: inherit;
+
+    position: absolute;
+    top: 50%;
+    right: -5px;
+
+    transform: translateY(-50%);
+    opacity: 0;
+
+    transition: opacity 0.2s ease;
+}
+
+.progress-area:hover .progress-bar::before{
+    opacity: 1;
+}
+
+.wrapper .timer{
+    width: 100%;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer span{
+    color: #222;
+    font-size: 15px;
+}
+
+
+
+/* icons-layer */
+
+.wrapper .icons-layer{
+    height: 30%;
+
+    transition: all 0.5s linear;
+}
+
+.wrapper .icons-layer.active-btn{
+    height: 65%;
+}
+
+.wrapper .icons-layer{
+    height: 30%;
+}
+
+.wrapper .icons-layer .icon-item{
+    height: 30%;
+    margin-top: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .icons-layer.active-btn .icon-item{
+    height: 24%;
+}
+
+.icon-item .action-btn{
+    width: 50px;
+    height: 50px;
+    color: #333;
+    border: none;
+
+    margin: 0 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.icon-item .action-btn.big-btn{
+    background: linear-gradient(90deg , rgba(87,255,255,0.8), rgba(255,224,255,1.00));
+    font-size: 25px;
+    border-radius: 50%;
+
+    transition: all 0.3s linear;
+}
+
+.icon-item .action-btn.small-btn{
+    color: #000;
+    font-size: 18px;
+    background: transparent;
+
+    transition: all 0.3s linear;
+}
+
+.icon-item .action-btn.big-btn:hover{
+    color: #777;
+}
+
+.icon-item .action-btn.small-btn:hover{
+    color: #fff;
+}
+
+
+
+/* users-layer */
+
+.wrapper .users-layer{
+    height: 20%;
+
+    transition: all 0.5s linear;
+}
+
+.wrapper .users-layer.shownav{
+    height: 50%;
+}
+
+.users-layer .music-list{
+    width: 330px;
+    height: 50px;
+    font-size: 18px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.music-list .header .row{
+    margin-left: 25px;
+}
+
+.row {
+    flex-grow: 1;
+}
+
+.row small, .row h4{
+    width: 97%;
+
+    display: block;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+}
+
+.row h3 i{
+    color: #555;
+    font-size: 18px;
+
+    padding-right: 8px;
+}
+
+.row h3{
+    color: #777;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.menu-btn{
+    color: #444;
+    background: transparent;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.users-layer ul{
+    max-height: 80%;
+    list-style-type: none;
+
+    margin: 0px 10px;
+    padding: 0 8px;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.users-layer ul::-webkit-scrollbar{
+    display: none;
+}
+
+.users-layer ul li{
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    padding-bottom: 20px;
+    margin-bottom: 26px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+}
+
+.users-layer ul li:first-of-type{
+    border-top: 1px solid #e5e5e5;
+
+    padding-top: 16px;
+}
+
+.users-layer ul li:last-child{
+    border-bottom: 1px solid #e5e5e5;
+}
+
+ul li .audio-duration{
+    color: #777;
+}

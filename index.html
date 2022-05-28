@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Disign</title>
+
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <!-- Player Layer -->
+
+        <div class="wrapper">
+            <div class="icon-logo">
+                <div class="nav-logo">
+                    <button><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+
+                <h3>Music</h3>
+
+                <div class="nav-logo">
+                    <button id="open" class="btn"><i class="fas fa-user"></i></button>
+                </div>
+            </div>
+
+            <div id="player-layer" class="player-layer">
+                <div class="control-layer">
+                    <div id="cd" class="cd">
+                        <img src="image/audio.jpg" id="cover" alt="musiccover" />
+                    </div>
+
+                    <div id="song-details" class="song-details">
+                        <p id="title" class="name">Nothing Gonna Change My Love For You</p>
+                    </div>
+
+                    <div id="progress-area" class="progress-area">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+
+                    <audio src="music/Nothing Gonna Change My Love For You.mp3" id="audio"></audio>
+
+                    <div id="timer" class="timer">
+                        <span id="current-time" class="current">0:00</span>
+                        <span id="duration-time" class="current">0:00</span>
+                    </div>
+                </div>
+            </div>
+
+
+    <!-- Icon Layer -->
+
+            <div id="icons-layer" class="icons-layer">
+                <div class="icon-item">
+                    <button id="prev" class="action-btn small-btn"><i class="fas fa-fast-backward"></i></button>
+                    <button id="play" class="action-btn big-btn"><i class="fas fa-play"></i></button>
+                    <button id="next" class="action-btn small-btn"><i class="fas fa-fast-forward"></i></button>
+                </div>
+            </div>
+
+
+    <!-- User Layer -->
+        
+            <div id="users-layer" class="users-layer">
+                <div class="music-list">
+                    <div class="header">
+                        <div class="row">
+                            <h3><i class="fas fa-headphones"></i>Music List</h3>
+                        </div>
+                    </div>
+
+                    <button id="toggle" class="menu-btn"><i class="fas fa-bars"></i></button>
+                </div>
+
+                <ul id="choose-music">
+                    <li onclick="songClicked(event)">
+                        <div class="row playing">
+                            <h4>Nothing's Gonna Change My Love For You</h4>
+                            <small>Westlife</small>
+                        </div>
+        
+                        <span class="audio-duration">3:49</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>All Too Well</h4>
+                            <small>Taylor Swift</small>
+                        </div>
+        
+                        <span class="audio-duration">10:13</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>Betty</h4>
+                            <small>Taylor Swift</small>
+                        </div>
+        
+                        <span class="audio-duration">4:56</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>Cardigan</h4>
+                            <small>Taylor Swift</small>
+                        </div>
+        
+                        <span class="audio-duration">4:35</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>Stitches</h4>
+                            <small>Shawn Mendes</small>
+                        </div>
+        
+                        <span class="audio-duration">3:23</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>Never Be Alone</h4>
+                            <small>Shawn Mendes</small>
+                        </div>
+        
+                        <span class="audio-duration">3:55</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>Imagination</h4>
+                            <small>Shawn Mendes</small>
+                        </div>
+        
+                        <span class="audio-duration">4:23</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>It Will Be Okay</h4>
+                            <small>Shawn Mendes</small>
+                        </div>
+        
+                        <span class="audio-duration">4:23</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>Legends Never Die</h4>
+                            <small>Ft.Against The Current</small>
+                        </div>
+        
+                        <span class="audio-duration">3:55</span>
+                    </li>
+
+                    <li onclick="songClicked(event)">
+                        <div class="row">
+                            <h4>Best of Me</h4>
+                            <small>NEFFEX</small>
+                        </div>
+        
+                        <span class="audio-duration">3:59</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+<!-- Modal Area -->
+<!-- Start Signup Modal -->
+
+    <div id="modal" class="modal-container">
+        <div class="modal">
+            <button id="close" class="close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        
+            <div class="modal-header">
+                <h3>Sign Up</h3>
+            </div>
+
+            <div class="modal-content">
+                <p>Register with us to get offers,support and more</p>
+
+                <form class="modal-form" action="" method="">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" name="name" id="name" class="form-input" placeholder="Enter your name"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email"></label>Email</label>
+                        <input type="email" name="email" id="email" class="form-input" placeholder="Enter your email" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-input" placeholder="Enter your password"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cfmpassword">CfmPassword</label>
+                        <input type="cfmpassword" name="cfmpassword" id="cfmpassword" class="form-input" placeholder="Enter your cfmpassword"/>
+                    </div>
+
+                    <input type="submit" value="submit" class="submit-btn" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js" type="text/javascript"></script>
+</body>
+</html>
